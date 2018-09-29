@@ -151,6 +151,19 @@ g5.selectAll(".gamel")
   .style("stroke","black")
 ```
 
+### Text
+```javascript
+svg.selectAll(".barra")
+   .data(data)
+   .enter()
+   .append("rect")
+   .attr("class","barra")
+   .attr("x",10)
+   .attr("y", (d,i)=>70*i )
+   .attr("width",(d,i)=>d.value/2000 )
+   .attr("height",50)
+```
+
 ## Scale
 ```javascript
 var scaleX = d3
