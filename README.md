@@ -153,15 +153,14 @@ g5.selectAll(".gamel")
 
 ### Text
 ```javascript
-svg.selectAll(".barra")
+svg.selectAll(".etiqueta")
    .data(data)
    .enter()
-   .append("rect")
-   .attr("class","barra")
+   .append("text")
+   .attr("class","etiqueta")
    .attr("x",10)
    .attr("y", (d,i)=>70*i )
-   .attr("width",(d,i)=>d.value/2000 )
-   .attr("height",50)
+   .html("hola")
 ```
 
 ## Scale
