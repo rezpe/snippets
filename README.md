@@ -151,6 +151,21 @@ g5.selectAll(".gamel")
   .style("stroke","black")
 ```
 
+## Scale
+```javascript
+var scaleX = d3
+  .scaleLinear()
+  .range([0, width])
+  .domain([0, d3.max(data,(d,i)=>d.value)]);
+```
+
+## Axis  
+```javascript
+var axisX = d3.axisBottom(scaleX).ticks(5);
+chart.append("g")
+  .attr("transform", `translate(0,${height})`)
+  .call(axisX);
+```
 
 ```javascript
 
