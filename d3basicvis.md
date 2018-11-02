@@ -163,6 +163,22 @@ svg.selectAll(".etiqueta")
    .html("hola")
 ```
 
+## Shapes with Data
+
+### Radial Line
+
+```javascript
+  const line = d3.lineRadial()
+                 .angle((d,i)=>scaleX(i))
+                 .radius((d,i)=>scaleY(d.actual_mean_temp))
+  
+  let lineRadial = g.append("path")
+                    .attr("d",line(data))
+                    .attr("fill","None")
+                    .attr("stroke","black")
+                    .attr("stroke-width",2)
+```
+
 ## Scale
 ```javascript
 var scaleX = d3
