@@ -1,5 +1,42 @@
 # Optimization and Speedup tricks in python
 
+## Profiling the code
+
+Profiling lets you find the lines of code that are the most time consuming. In jupyter, you load the extension with
+
+```python
+%load_ext line_profiler
+``` 
+
+Then you can check the function with
+
+```python
+%lprun -f get_vector vectors = [get_vector(obs_node,est_len,obs_len) for obs_node in total_obs_node]
+```
+
+You should see an output like this
+
+```
+Timer unit: 1e-06 s
+
+Total time: 0.51348 s
+File: <ipython-input-14-657307a40a51>
+Function: get_vector at line 9
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     9                                           def get_vector(obs_node,est_len,obs_len):
+    10                                           
+    11       100      94439.0    944.4     18.4      uniques = np.unique(obs_node)
+    12       100     125209.0   1252.1     24.4      res = [np.where(obs_node==unique) for unique in uniques]
+    13                                               
+    14       100      20974.0    209.7      4.1      w = np.zeros((len(uniques),obs_len)) 
+    15      3300       2831.0      0.9      0.6      for i in range(len(uniques)):
+    16      3200     269698.0     84.3     52.5          w[i][res[i]] = 1/(len(res[i])*est_len)
+    17                                                   
+    18       100        329.0      3.3      0.1      return zip(uniques,w)
+```
+
 ## Parallel with multiprocessing
 
 ```python
