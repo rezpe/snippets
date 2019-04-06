@@ -24,7 +24,7 @@ reg.predict([[2540],[3500],[4000]])
 ```
 
 ### k nearest neighbor
-parameters: n_neighbors
+* parameters: n_neighbors
 ```python
 # Load the library
 from sklearn.neighbors import KNeighborsRegressor
@@ -34,8 +34,8 @@ regk = KNeighborsRegressor(n_neighbors=2)
 regk.fit(X,y)
 ```
 ### Decision Tree
-Max_depth: Number of Splits
-Min_samples_leaf: Minimum number of observations per leaf
+* Max_depth: Number of Splits
+* Min_samples_leaf: Minimum number of observations per leaf
 ```python
 # Load the library
 from sklearn.tree import DecisionTreeRegressor
@@ -55,7 +55,26 @@ clf=LogisticRegression()
 # Fit the data
 clf.fit(X,y)
 ```
+### Support Vector Machine
+Parameters:
+* C: Sum of Error Margins
+* kernel:
+ * linear: line of separation
+ * rbf: circle of separation
+    * Additional param gamma: Inverse of the radius
+ * poly: curved line of separation
+    * Additional param degree: Degree of the polynome
+```python
+# Load the library
+from sklearn.svm import SVC
+# Create an instance of the classifier
+clf = SVC(kernel="linear",C=10)
+# Fit the data
+clf.fit(X,y)
+```
 ### k nearest neighbor
+Parameters: 
+* n_neighbors
 ```python
 # Load the library
 from sklearn.neighbors import KNeighborsClassifier
@@ -65,6 +84,9 @@ regk = KNeighborsClassifier(n_neighbors=2)
 regk.fit(X,y)
 ```
 ### Decision Tree
+Parameters:
+* Max_depth: Number of Splits
+* Min_samples_leaf: Minimum number of observations per leaf
 ```python
 # Import Library
 from sklearn.tree import DecisionTreeClassifier
