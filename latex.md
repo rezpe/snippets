@@ -25,6 +25,12 @@ This page shows useful snippets for latex
 
 ## Code with syntax highlighting
 
+It requires to build with the -shell-escape option
+
+```bash 
+pdflatex -shell-escape
+```
+
 ```latex
 \usepackage{minted}
 
