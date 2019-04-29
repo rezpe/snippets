@@ -2,7 +2,7 @@
 
 This page shows useful snippets for latex
 
-# Items
+## Items
 
 ```latex
 \begin{itemize}
@@ -12,7 +12,7 @@ This page shows useful snippets for latex
 \end{itemize}
 ```
 
-# Figures
+## Figures
 
 ```latex
 \begin{figure}[H]
