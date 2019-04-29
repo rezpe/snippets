@@ -22,3 +22,14 @@ This page shows useful snippets for latex
     \label{figure:spectristar}
 \end{figure}
 ```
+
+## Code with syntax highlighting
+
+```latex
+\usepackage{minted}
+
+\begin{minted}{python}
+import numpy as np
+a=b+1
+\end{minted}
+```
