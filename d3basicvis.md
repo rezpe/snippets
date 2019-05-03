@@ -97,15 +97,14 @@ g2.attr("transform","translate(50,70)")
 
 ## Data in Json Format
 ```javascript
-const data = [{value:10},
-              {value:20},
-              {value:40},
-              {value:30},
-              {value:60},
-              {value:10},
-              {value:70},
-              {value:80},
-             ]
+const data = [
+  { "followers": "100k-500k", "value": 12500 },
+  { "followers": "500k-1m", "value": 25000 },
+  { "followers": "1m-3m", "value": 125000 },
+  { "followers": "3m-7m", "value": 187500 },
+  { "followers": "over 7m", "value": 300000 }
+];
+                  
 ```
 
 ## Joined Shapes with data
