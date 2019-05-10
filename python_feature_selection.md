@@ -60,3 +60,41 @@ reduced_df = ansur_df.drop(to_drop, axis=1)
 
 print("The reduced dataframe has {} columns.".format(reduced_df.shape[1]))
 ```
+
+## Recursive Feature Elimination
+
+```python
+# Check the coefficients
+# Fit the scaler on the training features and transform these in one go
+X_train_std = scaler.fit_transform(X_train)
+
+# Fit the logistic regression model on the scaled training data
+lr.fit(X_train_std, y_train)
+
+# Scale the test features
+X_test_std = scaler.transform(X_test)
+
+# Predict diabetes presence on the scaled test set
+y_pred = lr.predict(X_test_std)
+
+# Prints accuracy metrics and feature coefficients
+print("{0:.1%} accuracy on test set.".format(accuracy_score(y_test, y_pred))) 
+print(dict(zip(X.columns, abs(lr.coef_[0]).round(2))))
+
+# Create the RFE with a LogisticRegression estimator and 3 features to select
+rfe = RFE(estimator=LogisticRegression(), n_features_to_select=3, verbose=1)
+
+# Fits the eliminator to the data
+rfe.fit(X_train, y_train)
+
+# Print the features and their ranking (high = dropped early on)
+print(dict(zip(X.columns, rfe.ranking_)))
+
+# Print the features that are not eliminated
+print(X.columns[rfe.support_])
+
+# Calculates the test set accuracy
+acc = accuracy_score(y_test, rfe.predict(X_test))
+print("{0:.1%} accuracy on test set.".format(acc)) 
+
+```
