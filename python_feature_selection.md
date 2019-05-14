@@ -170,4 +170,15 @@ zero_coef = la.coef_ == 0
 n_ignored = sum(zero_coef)
 print("The model has ignored {} out of {} features.".format(n_ignored, len(la.coef_)))
 
+# Find the right alpha value
+la = Lasso(.1, random_state=0)
+
+# Fits the model and calculates performance stats
+la.fit(X_train_std, y_train)
+r_squared = la.score(X_test_std, y_test)
+n_ignored_features = sum(la.coef_ == 0)
+
+# Print peformance stats 
+print("The model can predict {0:.1%} of the variance in the test set.".format(r_squared))
+print("{} out of {} features were ignored.".format(n_ignored_features, len(la.coef_)))
 ```
