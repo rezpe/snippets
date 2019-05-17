@@ -28,7 +28,7 @@ This page shows useful snippets for latex
 It requires to build with the -shell-escape option
 
 ```bash 
-pdflatex -shell-escape
+pdflatex -shell-escape article.latex
 ```
 
 ```latex
