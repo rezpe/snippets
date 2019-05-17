@@ -39,3 +39,12 @@ import numpy as np
 a=b+1
 \end{minted}
 ```
+
+## Multicolumn
+
+```latex
+\usepackage{multicol}
+
+\begin{multicols}{2}
+\end{multicols}
+```
