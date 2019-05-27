@@ -16,6 +16,19 @@ val df=parquetFileDF.select($"fuel_surcharge",
                      $"orig_off_point".alias("off_point"))
 ```
 
+# SQL Operations
+
+```scala
+val sbr_bookings = spark.read.parquet("hdfs://thingy.nce.amadeus.net:8020/anonim_sbr")
+sbr_bookings.createOrReplaceTempView("sbr_bookings")
+
+val queryDF = spark.sql("""SELECT creator_office_id,  booking_date, rloc , candidate_tkt_numbers,  tkt_number
+FROM sbr_bookings as s
+where rloc="12343" 
+""")
+queryDF.show()
+```
+
 # Operations on column
 
 ## Concatenations of columns
