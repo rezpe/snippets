@@ -32,12 +32,23 @@ pdflatex -shell-escape article.latex
 ```
 
 ```latex
-\usepackage{minted}
+\usepackage{minted} 
+\usepackage{mdframed}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
 
+\begin{mdframed}[backgroundcolor=bg]
 \begin{minted}{python}
-import numpy as np
-a=b+1
+from sklearn.cluster import KMeans
+
+X=df[['sepallength', 'sepalwidth', 'petallength', 'petalwidth']]
+from sklearn.preprocessing import LabelEncoder
+lbl = LabelEncoder()
+y=lbl.fit_transform(df["class"])
+
+model = KMeans(n_clusters=3)
+model.fit(X)
 \end{minted}
+\end{mdframed}
 ```
 
 ## Multicolumn
