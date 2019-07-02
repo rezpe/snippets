@@ -247,3 +247,29 @@ r_squared = lm.score(scaler.transform(X_test), y_test)
 print('The model can explain {0:.1%} of the variance in the test set using {1:} features.'.format(r_squared, len(lm.coef_)))
 
 ```
+
+## Feature Shuffling
+
+```python
+# https://blog.datadive.net/selecting-good-features-part-iii-random-forests/
+from sklearn.ensemble import ExtraTreesRegressor
+from sklearn.cross_validation import ShuffleSplit
+from sklearn.metrics import mean_squared_error
+from collections import defaultdict
+ 
+rf = ExtraTreesRegressor(n_estimators=500,min_samples_split=50,n_jobs=-1,verbose=True)
+scores = defaultdict(list)
+names = X_train.columns
+
+r = rf.fit(X_train, y_train)
+acc = mean_squared_error(y_test, rf.predict(X_test))
+for i in tqdm(range(len(names))):
+    X_t = X_test.copy()
+    np.random.shuffle(X_t.values[:, i])
+    shuff_acc = mean_squared_error(y_test, rf.predict(X_t))
+    scores[names[i]].append((acc-shuff_acc)/acc)
+    
+print("Features sorted by their score:")
+print(sorted([(round(np.mean(score), 4), feat) for
+              feat, score in scores.items()], reverse=True))
+```
