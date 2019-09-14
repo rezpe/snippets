@@ -46,7 +46,7 @@ plt.title('Red Histogram')
 plt.show()
 ```
 
-# Thresholding an image
+# Global Threshold of an image
 ```python
 # Import the otsu threshold function
 from skimage.filters import threshold_otsu
@@ -62,5 +62,41 @@ binary = chess_pieces_image_gray > thresh
 
 # Show the image
 show_image(binary, 'Binary image')
+
+## Trying different ones
+
+# Import the try all function
+from skimage.filters import try_all_threshold
+
+# Import the rgb to gray convertor function 
+from skimage import color
+
+# Turn the fruits image to grayscale
+grayscale = color.rgb2gray(fruits_image)
+
+# Use the try all method on the grayscale image
+fig, ax = try_all_threshold(grayscale, verbose=False)
+
+# Show the resulting plots
+plt.show()
 ```
+
+# Local Threshold
+```python
+# Import the local threshold function
+from skimage.filters import threshold_local
+
+# Set the block size to 35
+block_size = 35
+
+# Obtain the optimal local thresholding
+local_thresh = threshold_local(page_image, block_size, offset=10)
+
+# Obtain the binary image by applying local thresholding
+binary_local = page_image > local_thresh
+
+# Show the binary image
+show_image(binary_local, 'Local thresholding')
+```
+
 
