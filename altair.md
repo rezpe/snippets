@@ -19,7 +19,7 @@ alt.Chart(df).mark_bar().encode(
 )
 ``` 
 
-# scatter Plot 
+# Scatter Plot 
 
 ```python
 scatter = alt.Chart(df).mark_circle().encode(
