@@ -1,11 +1,71 @@
 ## Time Series with R
 
+## Exploring raw time series
+
+```R
+# Print the Nile dataset
+print(Nile)
+
+# List the number of observations in the Nile dataset
+length(Nile)
+
+# Display the first 10 elements of the Nile dataset
+head(Nile,10)
+
+# Display the last 12 elements of the Nile dataset
+tail(Nile,12)
+```
+
+## Analysis of frequency
+
+```R
+# Plot AirPassengers
+plot(AirPassengers)
+
+# View the start and end dates of AirPassengers
+start(AirPassengers)
+end(AirPassengers)
+
+# Use time(), deltat(), frequency(), and cycle() with AirPassengers 
+time(AirPassengers)
+deltat(AirPassengers)
+frequency(AirPassengers)
+cycle(AirPassengers)
+```
+
+## Imputing missing values
+
+```R 
+# Plot the AirPassengers data
+plot(AirPassengers)
+
+# Compute the mean of AirPassengers
+mean(AirPassengers, na.rm = TRUE)
+
+# Impute mean values to NA in AirPassengers
+AirPassengers[85:96] <- mean(AirPassengers, na.rm = TRUE)
+
+# Generate another plot of AirPassengers
+plot(AirPassengers)
+
+# Add the complete AirPassengers data to your plot
+rm(AirPassengers)
+points(AirPassengers, type = "l", col = 2, lty = 3)
+```
+
 ## Plot time Series
 
 ```R
 plot(tserie)
 plot(diff(tserie))
 plot(diff(log(tserie)))
+
+# Plot the Nile data
+plot(Nile)
+
+# Plot the Nile data with xlab and ylab arguments
+plot(Nile,xlab="Year",ylab="River Volume (1e9 m^{3})")
+
 ```
 
 ## Arma Model
