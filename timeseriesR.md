@@ -81,6 +81,9 @@ time_series <- ts(data_vector,start=2004,frequency=4)
 # Use print() and plot() to view time_series
 print(time_series)
 plot(time_series)
+
+# Check whether data_vector and time_series are ts objects
+is.ts(data_vector)
 ```
 
 ## Arma Model
