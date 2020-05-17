@@ -68,6 +68,21 @@ plot(Nile,xlab="Year",ylab="River Volume (1e9 m^{3})")
 
 ```
 
+## Timeseries R Object
+
+```R
+# Use print() and plot() to view data_vector
+print(data_vector)
+plot(data_vector)
+
+# Convert data_vector to a ts object with start = 2004 and frequency = 4
+time_series <- ts(data_vector,start=2004,frequency=4) 
+
+# Use print() and plot() to view time_series
+print(time_series)
+plot(time_series)
+```
+
 ## Arma Model
 
 The arima.sim() command requires that you specify a particular model and a number of observations (n) to simulate from that model. To simulate a MA(1) parameter, specify the MA argument within your model argument. For example, the MA(1) with parameter .9 can be simulated by setting model equal to list(order = c(0, 0, 1), ma = .9). A similar procedure can be used to generate the AR(2) model by creating a vector that specifies the ar coefficients.
