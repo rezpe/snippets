@@ -122,6 +122,34 @@ mean(y)
 var(y)
 ```
 
+## Random Walk
+
+```R
+# Generate a RW model using arima.sim
+random_walk <- arima.sim(model = list(order = c(0, 1, 0)), n = 100 )
+
+# Plot random_walk
+ts.plot(random_walk)
+
+# Calculate the first difference series
+random_walk_diff <- diff(random_walk)
+
+# Plot random_walk_diff
+ts.plot(random_walk_diff)
+  
+# Generate a RW model with a drift uing arima.sim
+rw_drift <- arima.sim(model = list(order = c(0, 1, 0)), n = 100, mean = 1)
+
+# Plot rw_drift
+ts.plot(rw_drift)
+
+# Calculate the first difference series
+rw_drift_diff <- diff(rw_drift)
+
+# Plot rw_drift_diff
+ts.plot(rw_drift_diff)
+
+```
 
 ## Arma Model
 
