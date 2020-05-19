@@ -149,6 +149,25 @@ rw_drift_diff <- diff(rw_drift)
 # Plot rw_drift_diff
 ts.plot(rw_drift_diff)
 
+# Difference your random_walk data
+rw_diff <- diff(random_walk)
+
+# Plot rw_diff
+ts.plot(rw_diff)
+
+# Now fit the WN model to the differenced data
+model_wn <- arima(rw_diff, order = c(0, 0, 0))
+
+# Copy and paste the value of the estimated time trend (intercept) below
+int_wn <- model_wn$coef
+
+# Plot the original random_walk data
+ts.plot(random_walk)
+
+# Use abline(0, ...) to add time trend to the figure
+abline(0, int_wn)
+
+
 ```
 
 ## Arma Model
