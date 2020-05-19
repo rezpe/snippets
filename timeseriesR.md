@@ -99,6 +99,24 @@ dz <- diff(z)
 dx <- diff(x,lag=4)
 ```
 
+## White noise
+
+```R
+# Simulate a WN model with list(order = c(0, 0, 0))
+white_noise <- arima.sim(model = list(order = c(0, 0, 0)), n = 100)
+
+# Plot your white_noise data
+ts.plot(white_noise)
+
+# Simulate from the WN model with: mean = 100, sd = 10
+white_noise_2 <- arima.sim(model = list(order = c(0, 0, 0)), n = 100, mean = 100, sd = 10)
+
+# Plot your white_noise_2 data
+ts.plot(white_noise_2)
+
+```
+
+
 ## Arma Model
 
 The arima.sim() command requires that you specify a particular model and a number of observations (n) to simulate from that model. To simulate a MA(1) parameter, specify the MA argument within your model argument. For example, the MA(1) with parameter .9 can be simulated by setting model equal to list(order = c(0, 0, 1), ma = .9). A similar procedure can be used to generate the AR(2) model by creating a vector that specifies the ar coefficients.
