@@ -86,6 +86,19 @@ plot(time_series)
 is.ts(data_vector)
 ```
 
+## Transformation
+
+```R
+# Log rapid_growth
+linear_growth <- log(rapid_growth)
+
+# Generate the first difference of z
+dz <- diff(z)
+
+# Generate a diff of x with lag = 4. Save this to dx
+dx <- diff(x,lag=4)
+```
+
 ## Arma Model
 
 The arima.sim() command requires that you specify a particular model and a number of observations (n) to simulate from that model. To simulate a MA(1) parameter, specify the MA argument within your model argument. For example, the MA(1) with parameter .9 can be simulated by setting model equal to list(order = c(0, 0, 1), ma = .9). A similar procedure can be used to generate the AR(2) model by creating a vector that specifies the ar coefficients.
