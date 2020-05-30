@@ -253,6 +253,31 @@ cor(x_t1, x_t0) * (n-1)/n
 acf(x)
 ```
 
+## AR Model
+
+```R
+# Fit the AR model to x
+arima(x, order = c(1, 0, 0))
+
+# Copy and paste the slope (ar1) estimate
+0.8575
+
+# Copy and paste the slope mean (intercept) estimate
+-0.0948
+
+# Copy and paste the innovation variance (sigma^2) estimate
+1.022
+
+# Fit the AR model to AirPassengers
+AR <- arima(AirPassengers, order = c(1, 0, 0))
+print(AR)
+
+# Run the following commands to plot the series and fitted values
+ts.plot(AirPassengers)
+AR_fitted <- AirPassengers - residuals(AR)
+points(AR_fitted, type = "l", col = 2, lty = 2)
+```
+
 ## Arma Model
 
 The arima.sim() command requires that you specify a particular model and a number of observations (n) to simulate from that model. To simulate a MA(1) parameter, specify the MA argument within your model argument. For example, the MA(1) with parameter .9 can be simulated by setting model equal to list(order = c(0, 0, 1), ma = .9). A similar procedure can be used to generate the AR(2) model by creating a vector that specifies the ar coefficients.
