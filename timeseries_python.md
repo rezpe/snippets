@@ -64,3 +64,32 @@ y = labels.reshape([-1, 1])
 percent_score = cross_val_score(model, X, y, cv=5)
 print(np.mean(percent_score))
 ``` 
+
+## Garch Model
+
+```python
+# Specify GARCH model assumptions
+basic_gm = arch_model(sp_data['Return'], p = 1, q = 1,
+                      mean = 'constant', vol = 'GARCH', dist = 'normal')
+# Fit the model
+gm_result = basic_gm.fit(update_freq = 4)
+
+# Display model fitting summary
+print(gm_result.summary())
+
+# Plot fitted results
+gm_result.plot()
+plt.show()
+
+# Specify a GARCH(1,1) model
+basic_gm = arch_model(sp_data['Return'], p = 1, q = 1, 
+                      mean = 'constant', vol = 'GARCH', dist = 'normal')
+# Fit the model
+gm_result = basic_gm.fit()
+
+# Make 5-period ahead forecast
+gm_forecast = gm_result.forecast(horizon = 5)
+
+# Print the forecast variance
+print(gm_forecast.variance[-1:])
+```
