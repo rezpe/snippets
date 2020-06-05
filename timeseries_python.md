@@ -92,4 +92,37 @@ gm_forecast = gm_result.forecast(horizon = 5)
 
 # Print the forecast variance
 print(gm_forecast.variance[-1:])
+
+# Obtain model estimated residuals and volatility
+gm_resid = gm_result.resid
+gm_std = gm_result.conditional_volatility
+
+# Calculate the standardized residuals
+gm_std_resid = gm_resid /gm_std
+
+# Plot the histogram of the standardized residuals
+plt.hist(gm_std_resid, bins = 50, 
+         facecolor = 'orange', label = 'standardized residuals')
+plt.hist(normal_resid, bins = 50, 
+         facecolor = 'tomato', label = 'Normal residuals')
+plt.legend(loc = 'upper left')
+plt.show()
+
+# Specify GARCH model assumptions
+skewt_gm = arch_model(sp_data['Return'], p = 1, q = 1, mean = 'constant', vol = 'GARCH', dist = 'skewt')
+# Fit the model
+skewt_result = skewt_gm.fit()
+
+# Get model estimated volatility
+skewt_vol = skewt_result.conditional_volatility
+
+# Plot model fitting results
+plt.plot(skewt_vol, color = 'gold', label = 'Skewed-t Volatility')
+plt.plot(normal_vol, color = 'red', label = 'Normal Volatility')
+plt.plot(sp_data['Return'], color = 'grey', 
+         label = 'Daily Returns', alpha = 0.4)
+plt.legend(loc = 'upper right')
+plt.show()
+
+
 ```
