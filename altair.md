@@ -45,6 +45,22 @@ trends_line=alt.Chart(trends).mark_line().encode(
 )
 ```
 
+# Trail
+
+```python
+troops_viz = alt.Chart(troops).mark_trail(
+    strokeCap="square"
+).encode(
+    latitude="lat",
+    longitude="lon",
+    color=alt.Color("direction",scale=alt.Scale(domain=['A', 'R'],range=["#EBD2A8","#888888"])),
+    size=alt.Size("survivors",scale=alt.Scale(range=[1,75])),
+    detail="division"
+).properties(
+    width=800
+)
+```
+
 # Map
 
 # Horizontal concatenation
